@@ -72,12 +72,17 @@ def game_done(board, message=False):
         return True
     return False
 
-# def is_draw():
-#     pass
-
 def play_game(player, board):
     square = int(input(f"{player}'s turn to choose a square (1-9): "))
-    board[square - 1] = player
+    
+    # Accept input from the user.
+    if board[square-1] == "x" or board[square-1] == "o":
+        print("That square is taken. Try again.")
+        square = int(input(f"{player}'s turn to choose a square (1-9): "))
+        board[square - 1] = player 
+        return True
+    else:
+        board[square - 1] = player 
 
 if __name__ == "__main__":
     main()
